@@ -1,0 +1,68 @@
+body {
+    font-family: Georgia, serif;
+    background-color: #eaeaea;
+    display: run-in;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+.guest-book {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+.guest-book h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.guest-book label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.guest-book input,
+.guest-book textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+.button-group button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.button-group button:hover {
+    background-color: #555;
+}
+.guest-entries {
+    margin-top: 30px;
+}
+.entry {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.entry h4 {
+    margin: 0;
+    color: #333;
+}
+.entry p {
+    color: #555;
+}
