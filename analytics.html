@@ -1,0 +1,58 @@
+<!--
+    Author:         Chad Bloom
+    Date:           2024-11-22
+    Description:    ISM6251.360 Assignment 2, design interactive web page meeting
+                    specific guidelines laid out in assignment documentation. The 
+                    topic of this web page is comedy movies.
+    File:           analytics.html is a page depicting static analytics relevant
+                    to this website's topic.  It contains HTML, CSS, external 
+                    links, JavaScript and bootstrapping.  It contains navigation
+                    across the top, a header and a vertical bar chart.
+-->
+            
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+    </head>
+    <body>
+        <a href="index.html" class="button">Home</a>
+        <a href="analytics.html" class="button">Analytics</a>
+        <a href="visitors.html" class="button">Guest Book</a>
+        <a href="aboutus.html" class="button">About</a>
+        <hr>
+        <h1>Number of movies per Actor/Duo:</h1>
+        <hr>
+        <canvas id="barchartexample" width="300" height="150"></canvas>
+        <Script>
+            new Chart(document.getElementById("barchartexample"), {
+                type: 'bar',
+                data: {
+                    labels: ["Bill Murray", "Leslie Nielsen", "Richard Pryor and Gene Wilder", "Robin Williams", "Wanda Sykes", "Steve Martin and Martin Short", "Steve Buscemi"],
+                    datasets: [
+                    {
+                        label: "Number of movies",
+                        backgroundColor: ["#a7a7a7", "#a7a7a7", "#a7a7a7", "#a7a7a7", "#a7a7a7", "#a7a7a7", "#a7a7a7"],
+                        data: [63, 103, 77, 67, 24, 90, 113]
+                    }
+                    ]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                    display: false,
+                    text: 'Total number of movies'
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 120
+                        }
+                    }
+                }
+            });
+        </Script>
+    </body>
+</html>

@@ -1,0 +1,217 @@
+<!--
+    Author:         Chad Bloom
+    Date:           2024-11-22
+    Description:    ISM6251.360 Assignment 2, design interactive web page meeting
+                    specific guidelines laid out in assignment documentation. The 
+                    topic of this web page is comedy movies.
+    File:           visitors.html is a guest book page.  It contains HTML, CSS,
+                    external links, JavaScript and bootstrapping.  It contains 
+                    navigation across the top, a request to sign the guest book
+                    and a card that contains the guest book sign in where a 
+                    visitor can share their name and a message, hit submit, view 
+                    their submission below, then choose to edit (update) or delete
+                    their entry.
+-->
+            
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Book</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaeaea;
+            display: run-in;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 15;
+            padding: 10px;
+        }
+        .guest-book {
+            background-color: #a7a7a7;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .guest-book h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .guest-book label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .guest-book input,
+        .guest-book textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button-group button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button-group button:hover {
+            background-color: #0056b3;
+        }
+        .guest-entries {
+            margin-top: 30px;
+        }
+        .entry {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .entry h4 {
+            margin: 0;
+            color: #333;
+        }
+        .entry p {
+            color: #555;
+        }
+    </style>
+    <!--script type="text/javascript" src="js/main.js"></script-->
+</head>
+<body>
+    <a href="index.html" class="button">Home</a>
+    <a href="analytics.html" class="button">Analytics</a>
+    <a href="visitors.html" class="button">Guest Book</a>
+    <a href="aboutus.html" class="button">About</a>
+    <hr>
+    <h1>Please sign my guest book!</h1>
+    <br>
+    <div class="guest-book">
+        <h2>Guest Book</h2>
+        <form id="guestForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <div class="button-group">
+                <button type="submit">Submit</button>
+                <button type="button" onclick="updateEntry()">Update</button>
+            </div>
+        </form>
+
+        <div class="guest-entries" id="guestEntries">
+            <h3>Guest Entries</h3>
+            <!-- Entries will be displayed here -->
+        </div>
+    </div>
+    <script>
+        const guestForm = document.getElementById('guestForm');
+        const guestEntries = document.getElementById('guestEntries');
+        let selectedEntry = null;
+
+        guestForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            if (selectedEntry) {
+                // Update the selected entry
+                selectedEntry.querySelector('h4').textContent = name;
+                selectedEntry.querySelector('p').textContent = message;
+                selectedEntry = null;
+                guestForm.reset();
+            } else {
+                // Create a new entry
+                const entryDiv = document.createElement('div');
+                entryDiv.classList.add('entry');
+
+                const entryName = document.createElement('h4');
+                entryName.textContent = name;
+
+                const entryMessage = document.createElement('p');
+                entryMessage.textContent = message;
+
+                entryDiv.appendChild(entryName);
+                entryDiv.appendChild(entryMessage);
+
+                // Create a button group for edit and delete buttons
+                const entryButtonsDiv = document.createElement('div');
+                entryButtonsDiv.classList.add('entry-buttons');
+
+                // Add an edit button
+                const editButton = document.createElement('button');
+                editButton.textContent = "Edit";
+                editButton.style.marginTop = "10px";
+                editButton.style.backgroundColor = "#ff9800";
+                editButton.style.color = "#fff";
+                editButton.style.border = "none";
+                editButton.style.padding = "5px 10px";
+                editButton.style.borderRadius = "5px";
+                editButton.style.cursor = "pointer";
+                editButton.classList.add('edit-button');
+
+                editButton.addEventListener('click', function() {
+                    selectedEntry = entryDiv;
+                    document.getElementById('name').value = entryName.textContent;
+                    document.getElementById('message').value = entryMessage.textContent;
+                });
+
+                // Add a delete button
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = "Delete";
+                deleteButton.style.marginTop = "10px";
+                deleteButton.style.backgroundColor = "#fd0202";
+                deleteButton.style.color = "#fff";
+                deleteButton.style.border = "none";
+                deleteButton.style.padding = "05px 10px";
+                deleteButton.style.borderRadius = "5px";
+                deleteButton.style.cursor = "pointer";
+                deleteButton.classList.add('delete-button');
+
+                deleteButton.addEventListener('click', function() {
+                    guestEntries.removeChild(entryDiv);
+                });
+
+                entryButtonsDiv.appendChild(editButton);
+                entryButtonsDiv.appendChild(deleteButton);
+                entryDiv.appendChild(entryButtonsDiv);
+
+                guestEntries.appendChild(entryDiv);
+            }
+
+            guestForm.reset();
+        });
+
+        function updateEntry() {
+            if (selectedEntry) {
+                const name = document.getElementById('name').value;
+                const message = document.getElementById('message').value;
+
+                selectedEntry.querySelector('h4').textContent = name;
+                selectedEntry.querySelector('p').textContent = message;
+                selectedEntry = null;
+                guestForm.reset();
+            } else {
+                alert('Please select an entry to update.');
+            }
+        }
+    </script>
+</body>
+</html>
