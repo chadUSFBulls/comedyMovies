@@ -1,3 +1,18 @@
+<!--
+    Author:         Chad Bloom
+    Date:           2024-11-22
+    Description:    ISM6251.360 Assignment 2, design interactive web page meeting
+                    specific guidelines laid out in assignment documentation. The 
+                    topic of this web page is comedy movies.
+    File:           visitors.html is a guest book page.  It contains HTML, CSS,
+                    external links, JavaScript and bootstrapping.  It contains 
+                    navigation across the top, a request to sign the guest book
+                    and a card that contains the guest book sign in where a 
+                    visitor can share their name and a message, hit submit, view 
+                    their submission below, then choose to edit (update) or delete
+                    their entry.
+-->
+            
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,12 +91,13 @@
             color: #555;
         }
     </style>
+    <!--script type="text/javascript" src="js/main.js"></script-->
 </head>
 <body>
     <a href="index.html" class="button">Home</a>
     <a href="analytics.html" class="button">Analytics</a>
-    <a href="aboutus.html" class="button">About</a>
     <a href="visitors.html" class="button">Guest Book</a>
+    <a href="aboutus.html" class="button">About</a>
     <hr>
     <h1>Please sign my guest book!</h1>
     <br>
@@ -105,7 +121,6 @@
             <!-- Entries will be displayed here -->
         </div>
     </div>
-
     <script>
         const guestForm = document.getElementById('guestForm');
         const guestEntries = document.getElementById('guestEntries');
