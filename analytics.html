@@ -26,60 +26,29 @@
             new Chart(document.getElementById("barchartexample"), {
                 type: 'bar',
                 data: {
-                    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                    labels: ["Bill Murray", "Leslie Nielsen", "Richard Pryor and Gene Wilder", "Robin Williams", "Wanda Sykes", "Steve Martin and Martin Short", "Steve Buscemi"],
                     datasets: [
                     {
-                        label: "Population (millions)",
-                        backgroundColor: ["#1f0f1f", "#0f1f1f", "#1f1f0f", "#e8c3b9", "#c45850"],
-                        data: [2478, 5267, 734, 784, 433]
+                        label: "Number of movies",
+                        backgroundColor: ["#a7a7a7", "#a7a7a7", "#a7a7a7", "#a7a7a7", "#a7a7a7", "#a7a7a7", "#a7a7a7"],
+                        data: [60, 100, 77, 60, 20, 90, 100]
                     }
                     ]
                 },
                 options: {
                     legend: { display: false },
                     title: {
-                    display: true,
-                    text: 'Predicted world population (millions) in 2050'
+                    display: false,
+                    text: 'Total number of movies'
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 120
+                        }
                     }
                 }
             });
         </Script>
     </body>
 </html>
-<!--
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-  <meta charset="utf-8" />
-  <title>Chart.js examples</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-</head>
-<body>
-  <h1>Bar chart example</h1>
-
-  <canvas id="barchartexample" width="300" height="150"></canvas>
-
-  <script>
-    new Chart(document.getElementById("barchartexample"), {
-      type: 'bar',
-      data: {
-        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-        datasets: [
-          {
-            label: "Population (millions)",
-            backgroundColor: ["#1f0f1f", "#0f1f1f", "#1f1f0f", "#e8c3b9", "#c45850"],
-            data: [2478, 5267, 734, 784, 433]
-          }
-        ]
-      },
-      options: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: 'Predicted world population (millions) in 2050'
-        }
-      }
-    });
-  </script>
-</body>
-</html>-->
